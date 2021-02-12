@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <script src="GradedHomeworkScript.js"></script>
+        <style>
+            body {
+                font-family: 'Nunito Sans', sans-serif;
+                margin: 0;
+            }
+            .header {
+                padding: 40px;
+                text-align: left;
+                background-color: #38A6A4;
+                color: black;
+                font-size: 28px;
+            }
+            .icons {
+                float: right;
+            }
+            .fa-search {
+                padding-right: 25px;
+                background-color: #38A6A4;
+                font-size: 28px;
+                cursor: pointer;
+            }
+            .fa-shopping-cart {
+                padding-right: 25px;
+                background-color: #38A6A4;
+                font-size: 28px;
+                cursor: pointer;
+            }
+            .fa-user {
+                background-color: #38A6A4;
+                font-size: 28px;
+                cursor: pointer;
+            }
+            .topnav {
+                overflow: hidden;
+                background-color: #38A6A4;
+            }
+            .topnav a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 8px 16px;
+                text-decoration: none;
+                font-size: 23px;
+                border-bottom: 3px solid transparent;
+            }
+            .topnav a:hover {
+                border-bottom: 3px solid white;
+            }
+            .topnav a.active {
+                border-bottom: 3px solid white;
+            }
+            .dropdown {
+                display: flex;
+            }
+            select {
+                width: 250px;
+                margin-left: 40px;
+                margin-top: 25px;
+                padding: 20px 20px;
+                border: 1px solid black;
+                border-radius: none;
+                background-color: white;
+            }
+            .sidenav {
+                width: 230px;
+                position: fixed;
+                top: 345px;
+                left: 40px;
+                border: 1px solid black;
+                box-sizing: border-box;
+            }
+            .sidenav a {
+                padding: 18px 16px;
+                text-decoration: none;
+                text-align: center;
+                font-size: 20px;
+                color: black;
+                display: block;
+                border-top: 1px solid black;
+            }
+            .sidenav a:hover {
+                background-color: #FCF2FF;
+            }
+            .sidenav a.active {
+                background-color: #DC85F6;
+                border-top: 0px;
+            }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-left: 230px;
+                font-size: 18px;
+            }
+            .product {
+                padding: 30px;
+                width: 25%;
+                text-align: center;
+            }
+            img {
+                height: 300px;
+            }
+            .btn {
+                background-color: #38A6A4;
+                color: white;
+                margin-top: 12px;
+                padding: 12px 50px 12px 50px;
+                font-size: 17px;
+                border-radius: 10px;
+            }
+            .pageNumber {
+                float: right;
+                padding-bottom: 80px;
+                margin-top: 25px;
+                margin-right: 65px;
+                font-size: 20px;
+            }
+            .fa-chevron-right {
+                padding-left: 15px;
+                color: #DC85F6;
+            }
+
+
+            .product {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                margin-left: 230px;
+                font-size: 18px;
+            }
+            .productBasicInfo {
+                display: flex;
+            }
+            .buttonAdd {
+                background-color: #38A6A4 ;
+                color:white;
+                padding: 15px 32px;
+                text-align: center;
+                float: center;
+                border: none;
+                font-size: 0.5cm;
+            }
+            #productList {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .details {
+                display: flex;
+                flex-direction: column;
+            }
+
+        </style>
+    </head>
+    <body onload="showProductListView()">
+        <div class="header">
+            <div class="icons">
+                <button class="fas fa-search" style="border:none;"></button>
+                <button class="fas fa-shopping-cart" style="border:none;" id="cart"></button>
+                <button class="far fa-user" style="border:none;"></button>
+            </div>
+
+            <h1>ShopTech</h1>
+            
+            <div class="topnav">
+                <a class="active" href="#phones">Phones</a>
+                <a href="#tvs">TVs</a>
+                <a href="#desktops">Desktops</a>
+                <a href="#laptops">Laptops</a>
+                <a href="#gaming">Gaming</a>
+                <a href="#cameras">Cameras</a>
+            </div>
+            
+        </div>
+
+        <div id="listView">
+            <div class="dropdown">
+                <select name="sort" id="sort">
+                    <option value="sort_by">Sort by</option>
+                    <option value="featured">Featured</option>
+                    <option value="newest">Newest</option>
+                    <option value="low_to_high">Price low to high</option>
+                    <option value="high_to_low">Price high to low</option>
+                </select>
+       
+                <select name="filter" id="filter">
+                    <option value="filter">Filter</option>
+                    <option value="brand">Brand</option>
+                    <option value="price">Price</option>
+                    <option value="memory">Memory size</option>
+                    <option value="sale">Sale products</option>
+                </select>
+        
+            </div>
+
+            <div class="sidenav">
+                <a class="active" href="#phones">Phones</a>
+                <a href="#chargers">Chargers</a>
+                <a href="#headphones">Headphones</a>
+                <a href="#phone_cases">Phone cases</a>
+                <a href="#adapters">Adapters</a>
+                <a href="#touch_screen_pens">Touch screen pens</a>
+            </div>
+
+            <div id="productList"></div>
+
+            <div class="pageNumber">
+                Page 1/6 <i class="fas fa-chevron-right"></i>
+            </div>
+
+    </body>
+</html>
